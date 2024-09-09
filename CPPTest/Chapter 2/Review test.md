@@ -18,16 +18,21 @@
 std::cout << "Hello,world"<<std::endl;
 ```
 ### 5．什么语句可以用来创建名为cheeses的整数变量？
-    int cheeses;
-
+```C++
+int cheeses;
+```
 ### 6．什么语句可以用来将值32赋给变量cheeses？
-    cheeses = 32
-
+```C++
+cheeses = 32
+```
 ### 7．什么语句可以用来将从键盘输入的值读入变量cheeses中？
-    std::cin >> cheeses;
-
+```C++
+std::cin >> cheeses;
+```
 ### 8．什么语句可以用来打印“We have X varieties of cheese,”，其中X为变量cheeses的当前值。
-    std::cout << "We have" << cheeses << "varieties of cheese" << std::endl;
+```C++
+std::cout << "We have" << cheeses << "varieties of cheese" << std::endl;
+```
 ### 9．下面的函数原型指出了关于函数的哪些信息？
 
 ![图片](https://tinify.cn/backend/opt/output/x9pscddnky2j6m24k4ke95w6np3z2cev/3.png)
