@@ -4,13 +4,13 @@
 
 ### 2．下面的预处理器编译指令是做什么用的？
 
-![图片](https://tinify.cn/backend/opt/output/6a1sb6ck3m3vm6ppwafmqpxsgj99yv21/1.png)
+![图片](Img/1.png)
 
     用来包含iostream文件
 
 ### 3．下面的语句是做什么用的？
 
-![图片](https://tinify.cn/backend/opt/output/xyn325dnzv148canqd9gdwxfcp42y4ma/2.png)
+![图片](Img/2.png)
 
     使用std命名空间
 ### 4．什么语句可以用来打印短语“Hello，world”，然后开始新的一行？
@@ -35,7 +35,7 @@ std::cout << "We have" << cheeses << "varieties of cheese" << std::endl;
 ```
 ### 9．下面的函数原型指出了关于函数的哪些信息？
 
-![图片](https://tinify.cn/backend/opt/output/x9pscddnky2j6m24k4ke95w6np3z2cev/3.png)
+![图片](Img/3.png)
 <br>
 ```C++
 第一个:函数的返回为整形,参数的类型为double
@@ -48,7 +48,7 @@ std::cout << "We have" << cheeses << "varieties of cheese" << std::endl;
     当函数的类型是void时
 ### 11．假设您编写的main( )函数包含如下代码：
 
-![图片](https://tinify.cn/backend/opt/output/esx92cmtzj4hmq601v5ja325yf9rxj19/4.png)
+![图片](Img/4.png)
 
 ### 而编译器指出cout是一个未知标识符。导致这种问题的原因很可能是什么？指出3种修复这种问题的方法。
 
