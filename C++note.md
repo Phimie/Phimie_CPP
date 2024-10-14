@@ -1,66 +1,92 @@
-# 9/2
-<br>
-想要获得图片URL地址可以先把本地的图片用使用TinyPNG转换一下 
+# C++Note
+### sizeof()运算符
+```C++
+// sizeof()运算符可以用于获取某个数据类型所占用空间的字节数
+//用法:
+sizeof(类型)
+```
+### 头文件climits(limits.h)
+```C++
+CHAR_MAX	char 的最大值
+SHRT_MAX	short 的最大值
+INT_MAX  	int 的最大值
+LONG_MAX	long 的最大值
+LLONG_MAX	long long 的最大 值
+CHAR_MIN	char 的最小值
+SHRT_MIN	short 的最小值
+INT_MIN	        int 的最小值
+LONG_MIN	long 的最小值
+LLONG_MIN	long long 的最小值
+SCHAR_MAX	signed char 的最大值
+SCHAR_MIN	signed char 的最小值
+UCHAR_MAX	unsigned char 的最大值
+USHRT_MAX	unsigned short 的最大值
+UINT_MAX	unsigned int 的最大值
+ULONG_MAX	unsigned 的最大值
+ULLONG_MAX	unsigned long 的最大值
+//用法实例:
+cout << "char: "<< CHAR_MAX << endl;
+```
+### 预处理语句#define和关键字const
 
-这样就可以获得图片的URL地址了
+ | 特性	| #define	| const|
+ | ------------- | -------- | ----|
+| 类型	| 无类型（仅文本替换）|	有类型（编译时类型检查）
+|  作用域	| 全局（直到 #undef 或结束）|	局部或全局（根据声明位置）
+| 预处理阶段	|在编译前处理	|在编译时处理
+| 使用方式|	#define NAME value|	const type NAME = value;
+| 可能产生副作用	| 容易引入错误（例如，宏展开）|	安全性高，不易引入错误
+| 适用场景	| 常量值、条件编译、宏函数等	| 常量、数组大小、函数参数等
 
+### 控制符std::dec、std::hex和std::oct
+```C++
+//控制符std::dec、std::hex和std::oct,分别用于指示cout以十进制、十六进制和八进制格式显示整数
+std::cout << 10 
+          << std::hex << 10 
+          << std::oct << 10 
+          << std::dec << 10 
+          << std::endl;
+//output:10 A 12 10
+```
 
-# 9/7
-<br>
-Q:在c++中,endl和\n的区别有哪些?
-<br><br>
-A:在 C++ 中，`endl` 和 `\n` 都用于输出换行，但它们之间有一些重要的区别。以下是它们的主要区别：
-
-### 1. 功能不同
-- **`std::endl`**:
-  - **换行**：输出一个换行符（换行）。
-  - **刷新缓冲区**：在输出换行符后，会立即刷新输出流的缓冲区。这意味着缓冲区中的所有内容都会被强制写入到输出设备（例如，控制台或文件）中。
-
-- **`\n`**:
-  - **换行**：同样输出一个换行符，但不刷新缓冲区。这意味着输出可能会在缓冲区中暂时保留，直到缓冲区满、手动刷新或程序结束时才会被写入。
-
-### 2. 性能
-- **`std::endl`**:
-  - 由于每次调用 `std::endl` 都会刷新缓冲区，它会比 `\n` 产生更高的开销。在频繁输出时（例如在循环中），使用 `std::endl` 可能会导致性能下降。
-
-- **`\n`**:
-  - 因为它不强制刷新缓冲区，通常在性能上更优越，特别是在需要频繁输出的情况下。
-
-### 3. 使用场景
-- 使用 **`std::endl`**：
-  - 当需要确保输出立即可见时，比如在调试时，或者在输出日志信息时因需要实时查看。
-  
-- 使用 **`\n`**：
-  - 在不需要立即刷新输出的情况下，推荐使用 `\n`，以提高性能。
-
-### 4. 示例
-
-```cpp
+### cout.put函数
+```C++
+//cout.put函数用于输出单个字符
+std::cout.put('H');
+//output: H
+```
+### char16_t和wchar_t的区别
+|特性|	wchar_t	|char16_t|
+|----|----|---|
+|定义	|宽字符类型|	UTF-16| 字符类型
+大小|	平台依赖（2 或 4 字节）|	固定（2 字节）
+用途	|处理多种字符编码	|处理 UTF-16 编码字符
+互操作性|	与标准库良好互操作	|与 UTF-16 字符串类型互操作
+字符集支持	|多种字符集（依赖平台）	|仅支持 UTF-16
+### std::wstring和std::wcin和std::wcout
+```C++
+/*
+std::wstring 是一种宽字符类型
+wcin:宽字符输入流，类似于 cin，用于从标准输入读取宽字符。
+wcout:宽字符输出流，类似于 cout，用于向标准输出写入宽字符
+*/
 #include <iostream>
+#include <locale>
+#include <io.h>
+#include <fcntl.h>
 
 int main() {
-    // 使用 std::endl
-    std::cout << "Hello, World!" << std::endl; // 输出换行并刷新缓冲区
+    // 设置控制台为UTF-16编码
+    _setmode(_fileno(stdout), _O_U16TEXT);
+    _setmode(_fileno(stdin), _O_U16TEXT);
 
-    // 使用 \n
-    std::cout << "Hello, World!\n"; // 输出换行，不立即刷新
+    // 设置wcin和wcout使用中文区域设置
+    std::locale::global(std::locale("chs"));
 
-    // 结合使用
-    std::cout << "Hello, " << "World!" << std::endl; // 输出并刷新
-    std::cout << "Hello, " << "World!\n"; // 输出换行
+    std::wstring name;
+    std::wcout << L"请输入您的名字: ";
+    std::wcin >> name;
+    std::wcout << L"您好, " << name << L"!" << std::endl;
     return 0;
 }
 ```
-
-### 总结
-- **`std::endl`**：换行 + 刷新缓冲区（性能较差）。
-- **`\n`**：仅换行（性能较好）。
-
-在实际编程中，选择使用 `std::endl` 还是 `\n` 应基于特定需求和性能考虑。
-<br>
-# 9/8
-<br>
-对象: 通常用于调用成员函数或访问数据成员。例如，使用 cin 来调用 istream 类的成员函数，如 cin >> variable;  
-<br>
-<br>
-函数: 通常通过函数名进行调用，并传入必要的参数。例如，myFunction(arg1, arg2);。
