@@ -65,28 +65,15 @@ std::cout.put('H');
 字符集支持	|多种字符集（依赖平台）	|仅支持 UTF-16
 ### std::wstring和std::wcin和std::wcout
 ```C++
-/*
 std::wstring 是一种宽字符类型
 wcin:宽字符输入流，类似于 cin，用于从标准输入读取宽字符。
 wcout:宽字符输出流，类似于 cout，用于向标准输出写入宽字符
-*/
-#include <iostream>
-#include <locale>
-#include <io.h>
-#include <fcntl.h>
+```
 
-int main() {
-    // 设置控制台为UTF-16编码
-    _setmode(_fileno(stdout), _O_U16TEXT);
-    _setmode(_fileno(stdin), _O_U16TEXT);
-
-    // 设置wcin和wcout使用中文区域设置
-    std::locale::global(std::locale("chs"));
-
-    std::wstring name;
-    std::wcout << L"请输入您的名字: ";
-    std::wcin >> name;
-    std::wcout << L"您好, " << name << L"!" << std::endl;
-    return 0;
-}
+### 改变控制台编码
+```C++
+include <windows.h>
+// 将控制台输入和输出代码页都设置为 UTF-8
+SetConsoleCP(CP_UTF8);   // 设置输入代码页
+SetConsoleOutputCP(CP_UTF8); // 设置输出代码页
 ```
