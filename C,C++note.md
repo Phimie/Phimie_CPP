@@ -77,3 +77,6 @@ include <windows.h>
 SetConsoleCP(CP_UTF8);   // 设置输入代码页
 SetConsoleOutputCP(CP_UTF8); // 设置输出代码页
 ```
+
+### vector()
+```C++
