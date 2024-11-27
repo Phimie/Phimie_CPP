@@ -80,3 +80,32 @@ SetConsoleOutputCP(CP_UTF8); // 设置输出代码页
 
 ### vector()
 ```C++
+初始化：
+std::vector<int> num={1,2,3,4,5}
+std::vector<int> num(5,1)    #5个元素都初始化为1
+std::vector<int> num(5)  #创建一个大小为5的vector，但元素未初始化
+
+访问元素：
+num[0]
+num.at(0)    #安全访问
+
+添加元素：
+num.push_back(5)
+num.emplace_back(5)  #构造元素添加到末尾
+
+插入元素：
+num.insert(5,2)   #在位置5添加元素2
+num.insert(5,3,2)  #在位置5插入3个2
+
+删除元素：
+num.pop_back()    #删除最后一个元素
+num.erase(5)  #删除第5个元素
+num.erase(1,4)  #删除1到4这个范围以内的元素
+
+大小和容量：
+num.size() #返回num的元素数量
+num.capacity #返回num的容量
+num.resize(5) #改变num的容量为5
+num.clear()  #删除所有元素，但不分配内存
+num.swap(num2) #交换num和num2中的内容
+```
