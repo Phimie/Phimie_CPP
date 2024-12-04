@@ -109,3 +109,32 @@ num.resize(5) #改变num的容量为5
 num.clear()  #删除所有元素，但不分配内存
 num.swap(num2) #交换num和num2中的内容
 ```
+
+###cctype库
+```C++
+1. isalnum(char c)：检查字符  c  是否为字母或数字。
+
+2. isalpha(char c)：检查字符  c  是否为字母。
+
+3. iscntrl(char c)：检查字符  c  是否为控制字符。
+
+4. isdigit(char c)：检查字符  c  是否为数字（0-9）。
+
+5. isgraph(char c)：检查字符  c  是否为可打印的非空格字符。
+
+6. islower(char c)：检查字符  c  是否为小写字母。
+
+7. isprint(char c)：检查字符  c  是否为可打印字符，包括空格。
+
+8. ispunct(char c)：检查字符  c  是否为标点符号。
+
+9. isspace(char c)：检查字符  c  是否为空白字符。
+
+10. isupper(char c)：检查字符  c  是否为大写字母。
+
+11. isxdigit(char c)：检查字符  c  是否为十六进制数字（0-9, a-f, A-F）。
+
+12. tolower(char c)：将字符  c  转换为小写字母（如果需要）。
+
+13. toupper(char c)：将字符  c  转换为大写字母（如果需要）。
+```
