@@ -110,7 +110,7 @@ num.clear()  #删除所有元素，但不分配内存
 num.swap(num2) #交换num和num2中的内容
 ```
 
-###cctype库
+### cctype库
 ```C++
 1. isalnum(char c)：检查字符  c  是否为字母或数字。
 
