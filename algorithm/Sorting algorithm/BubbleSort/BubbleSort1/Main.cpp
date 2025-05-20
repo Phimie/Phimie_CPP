@@ -23,7 +23,7 @@ int main()
     BubbleSort(arr, n);
     for (int i = 0; i < n; i++)
     {
-        std::cout << arr[i] << " ";
+        std::cout << arr[i] << " "; //
     }
     system("pause");
     return 0;
