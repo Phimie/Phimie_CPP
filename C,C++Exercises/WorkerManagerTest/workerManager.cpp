@@ -79,6 +79,10 @@ void WorkerManager::Add_Emp()
             {
             case 1:
                 worker = new Employee(id, name, 1);
+            case 2:
+                worker = new Manager(id, name, 1);
+            case 3:
+                worker = new Boss(id, name, 1);
             default:
                 break;
             }
@@ -96,10 +100,11 @@ void WorkerManager::Add_Emp()
         // 更新新的职工人数
         this->m_EmpNum = newSize;
 
-        // 成功添加后 保存到文件中
-
         // 提示添加成功
         std::cout << "成功添加" << addNum << "名新职工!" << std::endl;
+
+        // 保存数据到文件中
+        this->save();
     }
     else
     {
@@ -111,6 +116,25 @@ void WorkerManager::Add_Emp()
     system("cls");
 }
 
+void WorkerManager::save()
+{
+    std::ofstream ofs("empFile.txt", std::ios::out);
+
+    for (int i = 0; i < this->m_EmpNum; i++)
+    {
+        ofs << this->m_EmpArray[i]->m_Id << " "
+            << this->m_EmpArray[i]->m_Name << ""
+            << this->m_EmpArray[i]->m_DeptId << std::endl;
+    }
+
+    ofs.close();
+}
+
 WorkerManager::~WorkerManager()
 {
+    if (this->m_EmpArray != NULL)
+    {
+        delete[] this->m_EmpArray;
+        this->m_EmpArray = NULL;
+    }
 }

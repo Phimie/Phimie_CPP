@@ -8,6 +8,7 @@
 #include "manager.cpp"
 #include "boss.h"
 #include "boss.cpp"
+#include <fstream>
 
 class WorkerManager
 {
@@ -22,7 +23,9 @@ public:
 
     Worker **m_EmpArray; // 职工数组指针
 
-    void Add_Emp();
+    void Add_Emp(); // 添加职工
+
+    void save();
 
     ~WorkerManager(); // 析构函数
 };
